@@ -212,3 +212,58 @@ body { background: #000; overflow: hidden; width: 100vw; height: 100vh; display:
   height: 280px; border-radius: 10px; object-fit: cover;
   scroll-snap-align: start; flex-shrink: 0;
 }
+
+/* --- RESPONSIVE MÓVIL --- */
+@media (max-width: 768px) {
+  #visor {
+    width: 100%;
+    max-width: none;
+  }
+  .capa img,
+  .capa video,
+  .video-reproductor,
+  .svg-overlay {
+    transform: scale(1.3);
+    transform-origin: center center;
+  }
+  .btn-descubrir {
+    padding: 12px 24px;
+    font-size: 0.95rem;
+    bottom: 8%;
+  }
+  .btn-volver {
+    top: 12px; left: 60px;
+    padding: 8px 14px;
+    font-size: 0.8rem;
+  }
+  .ui-btn {
+    padding: 8px;
+    top: 12px;
+  }
+  .ui-btn.top-left { left: 12px; }
+  .ui-btn.top-right { right: 12px; }
+  .modal-content {
+    width: 100%;
+    max-width: none;
+    min-height: 100vh;
+    border-radius: 0;
+    padding: 20px;
+  }
+  .galeria-scroll img {
+    height: 200px;
+  }
+  .sidebar {
+    width: 280px;
+  }
+  .marcador-4a { top: 40%; left: 60%; }
+  .marcador-4b { top: 50%; left: 60%; }
+  .punto-pulso {
+    width: 10px; height: 10px;
+  }
+  .etiqueta-depto {
+    font-size: 0.8rem;
+  }
+  .nombre-depto {
+    font-size: 0.7rem;
+  }
+}

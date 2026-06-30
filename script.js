@@ -114,3 +114,13 @@ function toggleFullscreen() {
     document.exitFullscreen();
   }
 }
+
+const svgOverlay = document.querySelector('.svg-overlay');
+
+function ajustarMediosMobile() {
+  if (!svgOverlay) return;
+  svgOverlay.setAttribute('preserveAspectRatio', 'none');
+}
+
+window.addEventListener('resize', ajustarMediosMobile);
+ajustarMediosMobile();
