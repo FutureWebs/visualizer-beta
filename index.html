@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recorrido Virtual</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+
+  <button id="btn-sidebar" class="ui-btn top-left" onclick="toggleSidebar()" aria-label="Menú">
+    <span class="material-icons">menu</span>
+  </button>
+  <button id="btn-fullscreen" class="ui-btn top-right" onclick="toggleFullscreen()" aria-label="Pantalla completa">
+    <span class="material-icons">fullscreen</span>
+  </button>
+
+  <aside id="sidebar" class="sidebar">
+    <button class="close-btn" onclick="toggleSidebar()" aria-label="Cerrar menú">
+      <span class="material-icons">close</span>
+    </button>
+    <h2>Contacto</h2>
+    <p style="color: #aaa; font-size: 0.9rem;">Agendá tu visita hoy mismo.</p>
+    <ul>
+      <li><span class="material-icons">phone</span> +54 9 11 1234-5678</li>
+      <li><span class="material-icons">email</span> ventas@proyecto.com</li>
+    </ul>
+  </aside>
+
+  <main id="visor">
+
+    <div id="capa-video" class="capa capa-video">
+      <video id="video-adelante" src="media/vfin.mp4" muted playsinline preload="auto" class="video-reproductor"></video>
+      <video id="video-atras" src="media/trans.mp4" muted playsinline preload="auto" class="video-reproductor" style="display: none;"></video>
+    </div>
+
+    <div id="capa-inicio" class="capa capa-inicio">
+      <img src="media/inicio.jpg" alt="Frente del edificio">
+      <button class="btn-descubrir" onclick="iniciarRecorrido()">
+        Descúbrenos <span class="material-icons">arrow_forward</span>
+      </button>
+    </div>
+
+    <div id="capa-interactiva" class="capa capa-interactiva">
+      <img src="media/fin.jpg" alt="Edificio interactivo">
+
+      <button class="btn-volver" onclick="volverAtras()" aria-label="Volver atrás">
+        <span class="material-icons">arrow_back</span> Volver
+      </button>
+
+      <svg width="100%" height="100%" viewBox="0 0 1280 720" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-overlay" preserveAspectRatio="none">
+        <path id="depto_1" class="zona-clic"
+              d="M741 281L682 282.5H681.5V352.5L741.5 353.5L831 337.5L913.5 322V279.5H884L741 281Z"
+              onmouseenter="mostrarTooltip('depto_1')"
+              onmousemove="moverTooltip(event)"
+              onmouseleave="ocultarTooltip()"
+              onclick="abrirGaleria('depto_1')"/>
+
+        <path id="depto_2" class="zona-clic"
+              d="M741 354L682 352.5V422L741 425L833.5 393.5L913 367V323.5L864 332L741 354Z"
+              onmouseenter="mostrarTooltip('depto_2')"
+              onmousemove="moverTooltip(event)"
+              onmouseleave="ocultarTooltip()"
+              onclick="abrirGaleria('depto_2')"/>
+      </svg>
+
+      <div id="marcador-4a" class="marcador marcador-4a" data-depto="depto_1">
+        <div class="punto-pulso"></div>
+        <span class="etiqueta-depto">4A</span>
+        <span class="nombre-depto">Departamento 4A</span>
+      </div>
+      <div id="marcador-4b" class="marcador marcador-4b" data-depto="depto_2">
+        <div class="punto-pulso"></div>
+        <span class="etiqueta-depto">4B</span>
+        <span class="nombre-depto">Departamento 4B</span>
+      </div>
+
+      <div id="tooltip">
+        <h3 id="tt-titulo">Depto</h3>
+        <p id="tt-sub">Sub</p>
+      </div>
+    </div>
+  </main>
+
+  <div id="modal-galeria" class="modal">
+    <div class="modal-content">
+      <button class="close-modal" onclick="cerrarGaleria()" aria-label="Cerrar galería">&times;</button>
+      <h2 id="modal-titulo">Departamento</h2>
+      <p id="modal-sub" style="color: #888; font-size: 0.85rem;"></p>
+      <p id="modal-desc" style="color: #aaa; font-size: 0.9rem; margin-top: 8px; line-height: 1.5;"></p>
+      <div class="detalles-grid">
+        <div class="detalle-item">
+          <span class="material-icons">layers</span>
+          Piso <span id="det-piso"></span>
+        </div>
+        <div class="detalle-item">
+          <span class="material-icons">bed</span>
+          <span id="det-habitaciones"></span>
+        </div>
+        <div class="detalle-item">
+          <span class="material-icons">shower</span>
+          <span id="det-banos"></span>
+        </div>
+      </div>
+      <div id="galeria-contenedor" class="galeria-scroll"></div>
+    </div>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
